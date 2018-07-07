@@ -8,9 +8,11 @@ ball ball;
 upgrade_item upgradeItem;
 std::vector <block> blocks;
 std::vector <strong_block> strong_blocks;
+std::vector <upgrade_item> upgrade_items;
 int main()
 {
 	sf::Clock clock;
+	sf::Clock upgradeItemClock;
 	sf::Texture upgrade_texture;
 	upgrade_texture.loadFromFile("pill.png");
 	upgrade_texture.setSmooth(true);
@@ -28,6 +30,12 @@ int main()
 	background_sprite.setTexture(background_texture);
 		float oX = 10;
 		float oX_2 = 10;
+		for (int i = 0; i < 300; i++)
+		{
+			upgrade_item uItem;
+			uItem.body.setTexture(&upgrade_texture);
+			upgrade_items.push_back(uItem);
+		}
 	for (int i = 0; i < 16; i++)
 	{
 		sf::Vector2f place({ oX,100 });
@@ -64,8 +72,6 @@ int main()
 		{
 			paddle.changeBackSize();
 		}
-		
-
 		//draw
 		window.clear();
 		window.draw(background_sprite);
@@ -82,6 +88,7 @@ int main()
 			strong_blocks[l].collision_(ball);
 			strong_blocks[l].draw(window);
 		}
+		int temp = 0;
 		upgradeItem.draw(window);
 		window.display();
 	}
