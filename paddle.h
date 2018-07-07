@@ -2,8 +2,10 @@
 #include <SFML/Graphics.hpp>
 #ifndef paddle_h
 #define paddle_h
-
+#include "upgrade.h"
+class upgrade_item;
 class paddle {
+	friend class upgrade_item;
 protected:
 	sf::RectangleShape body;
 	sf::Vector2f movement_speed{ 2,0 };
@@ -11,7 +13,8 @@ public:
 	paddle();
 	sf::RectangleShape get_shape();	//Return body
 	void draw(sf::RenderWindow & window); //draw_paddle
-	void movement();						//W,A,S,D movement
+	void movement();				//A,D movement
+	void changeBackSize();
 };
 class block;
 class strong_block;

@@ -7,6 +7,10 @@ paddle::paddle()
 	body.setPosition({ 400,600 - 30 });
 	body.setSize({ 50,10 });
 }
+void paddle::changeBackSize()
+{
+	body.setSize({ 50,10 });
+}
 void paddle::movement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
