@@ -30,8 +30,7 @@ void upgrade_item::intersectWithPaddle(paddle & paddle,sf::Clock&clock)
 		paddle.body.setSize({ paddle.body.getSize().x + 70, paddle.body.getSize().y });
 		clock.restart();
 	}
-		
-	
+
 }
 void upgrade_item::draw(sf::RenderWindow&window)
 {
