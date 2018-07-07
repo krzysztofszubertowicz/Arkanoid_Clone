@@ -130,7 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="paddle.h" />
-    <ClInclude Include="player.h" />
+    <ClInclude Include="upgrade.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="back.png" />

@@ -2,12 +2,19 @@
 #include <iostream>
 #include <vector>
 #include "paddle.h"
+#include "upgrade.h"
 paddle paddle;
 ball ball;
+upgrade_item upgradeItem;
 std::vector <block> blocks;
 std::vector <strong_block> strong_blocks;
 int main()
 {
+	sf::Clock clock;
+	sf::Texture upgrade_texture;
+	upgrade_texture.loadFromFile("pill.png");
+	upgrade_texture.setSmooth(true);
+	upgradeItem.body.setTexture(&upgrade_texture);
 	sf::Texture background_texture;
 	background_texture.setSmooth(true);
 	background_texture.loadFromFile("back.png");
@@ -51,7 +58,12 @@ int main()
 		//update
 		paddle.movement();
 		ball.moving(paddle);
-
+		upgradeItem.intersectWithPaddle(paddle,clock);
+		upgradeItem.movement();
+		if (clock.getElapsedTime().asSeconds() > 6)
+		{
+			paddle.changeBackSize();
+		}
 		
 
 		//draw
@@ -70,6 +82,7 @@ int main()
 			strong_blocks[l].collision_(ball);
 			strong_blocks[l].draw(window);
 		}
+		upgradeItem.draw(window);
 		window.display();
 	}
 
